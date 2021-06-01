@@ -9,7 +9,7 @@ class ContactModel(models.Model):
     relationship = models.CharField(max_length=123)
     email = models.EmailField(max_length=100)
     phone = models.CharField(max_length=123)
-    adress = models.CharField(max_length=123)
+    address = models.CharField(max_length=123)
 
     def __str__(self):
         return self.fullname

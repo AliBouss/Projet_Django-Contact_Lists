@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,31 +7,72 @@
     <title>Contact List</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+
+    <a class="navbar-brand" href="#">Contact Application</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item mr-5">
+                <a class="nav-link" href="#">About Us</a>
+            </li>
+        </ul>
+
+        <form class="d-flex" id="search-form">
+                <input class="form-control me-2" type="search" placeholder="Search Name" aria-label="Search">
+                <button class="btn btn-outline-success ml-1" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
 
 <div class="container">
     <div class="col-md-10 offset-md-1 mt-5">
         <div class="jumbotron">
-
-
             <p class="lead font-italic ">
-                Please Add A New Contact
-                <i class="fas fa-plus-square ml-3"></i>
-
+                Add A New Contact
+                <a href="{% url 'add-contact'%}"><i class="fas fa-plus-square ml-3"></i></a>
             </p>
 
-
-            <nav class="navbar navbar-light bg-light">
-                <div class="container-fluid">
-                    <form class="d-flex" id="search-form">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </nav>
             <hr class="my-4">
+
+
+            <div class="table-reponsive">
+
+                <table class="table table-bordered table-dark">
+                    <thead>
+
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Relationship</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Address</th>
+                    </tr>
+                    {% for contact in contacts reversed %}
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">{{contact.id}}</th>
+                        <td>{{contact.fullname}}</td>
+                        <td>{{contact.relationship}}</td>
+                        <td>{{contact.email}}</td>
+                        <td>{{contact.phone}}</td>
+                        <td>{{contact.address}}</td>
+                    </tr>
+                {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
         </div>
     </div>
 
