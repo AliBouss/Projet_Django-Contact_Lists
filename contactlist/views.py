@@ -33,5 +33,6 @@ def delete(request):
     return render(request, "delete.html")
 
 
-def contact_profile(request):
-    return render(request, "contact-profile.html")
+def contactProfile(request, pk):
+    contact = ContactModel.objects.get(id=pk)
+    return render(request, "contact-profile.html", {'contact': contact})

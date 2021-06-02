@@ -5,19 +5,29 @@
     <title>Contact Profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
 <div class="container">
-    <div class="col-md-10 offset-md-1 mt-5">
-        <div class="jumbotron">
-              <h1 class="display-4">Contact Profile</h1>
-              <p class="lead font-italic">Employees Register Application with CRUD operators....</p>
-              <hr class="my-4">
 
-        </div>
-    </div>
+  <div class="card text-center">
+  <div class="card-header">
+      <a href="{% url 'index' %}"><i class="fas fa-arrow-circle-left"></i></a>
+    Contact Details
+  </div>
+  <div class="card-body">
+
+    <h5 class="card-title">{{contact.fullname | title}}</h5>
+       <p class="card-title">{{contact.relationship | title}}</p>
+      <p class="card-title">{{contact.phone | title}}</p>
+      <p class="card-title">{{contact.email | title}}</p>
+      <h5 class="card-title">{{contact.address | title}}</h5>
+    <a href="#" class="btn btn-primary">Change</a>
+  </div>
+  <div class="card-footer text-muted">
+    2 days ago
+  </div>
+</div>
 
 </div>
 

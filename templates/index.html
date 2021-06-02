@@ -47,6 +47,7 @@
             <div class="table-reponsive">
 
                 <table class="table table-bordered table-dark">
+
                     <thead>
 
                     <tr>
@@ -57,20 +58,30 @@
                         <th scope="col">Phone Number</th>
                         <th scope="col">Address</th>
                     </tr>
+
                     {% for contact in contacts reversed %}
+
+
                     </thead>
+                    <a href="#">
+
                     <tbody>
+
                     <tr>
                         <th scope="row">{{contact.id}}</th>
-                        <td>{{contact.fullname}}</td>
-                        <td>{{contact.relationship}}</td>
-                        <td>{{contact.email}}</td>
-                        <td>{{contact.phone}}</td>
-                        <td>{{contact.address}}</td>
+                        <td>{{contact.fullname | title}}</td>
+                        <td>{{contact.relationship | title}}</td>
+                        <td>{{contact.email | title}}</td>
+                        <td>{{contact.phone | title}}</td>
+                        <td>{{contact.address | title}}</td>
                     </tr>
+                </a>
                 {% endfor %}
+
                     </tbody>
+
                 </table>
+
 
             </div>
         </div>
