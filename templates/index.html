@@ -34,59 +34,38 @@
 </nav>
 
 <div class="container">
+
     <div class="col-md-10 offset-md-1 mt-5">
+
         <div class="jumbotron">
             <p class="lead font-italic ">
                 Add A New Contact
                 <a href="{% url 'add-contact'%}"><i class="fas fa-plus-square ml-3"></i></a>
             </p>
 
+
+                {% for contact in contacts reversed %}
             <hr class="my-4">
-
-
-            <div class="table-reponsive">
-
-                <table class="table table-bordered table-dark">
-
-                    <thead>
-
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Relationship</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Phone Number</th>
-                        <th scope="col">Address</th>
-                    </tr>
-
-                    {% for contact in contacts reversed %}
-
-
-                    </thead>
-                    <a href="#">
-
-                    <tbody>
-
-                    <tr>
-                        <th scope="row">{{contact.id}}</th>
-                        <td>{{contact.fullname | title}}</td>
-                        <td>{{contact.relationship | title}}</td>
-                        <td>{{contact.email | title}}</td>
-                        <td>{{contact.phone | title}}</td>
-                        <td>{{contact.address | title}}</td>
-                    </tr>
-                </a>
+            <a class="nav-link" href="{% url 'profile' contact.id %}">
+                <div class="card mx-auto w-auto" style="width: 18rem;" >
+                    <div class="card-body">
+                        <h5 class="card-title">{{contact.fullname | title}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{contact.relationship | title}}</h6>
+                        <a href="#" class="card-link"><i class="fas fa-cog"></i></a>
+                        <a href="#" class="card-link"><i class="fas fa-trash-alt"></i></a>
+                    </div>
+                </div>
                 {% endfor %}
-
-                    </tbody>
-
-                </table>
-
-
-            </div>
+            </a>
         </div>
     </div>
 
+</div>
+
+
+<div class="row mx-md-n5">
+  <div class="col px-md-5"><div class="p-3 border bg-light">Custom column padding</div></div>
+  <div class="col px-md-5"><div class="p-3 border bg-light">Custom column padding</div></div>
 </div>
 
 

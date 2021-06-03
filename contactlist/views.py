@@ -25,14 +25,25 @@ def addcontact(request):
     return render(request, "addcontact.html")
 
 
-def edit(request):
-    return render(request, "edit.html")
+def contactProfile(request, pk):
+    contact = ContactModel.objects.get(id=pk)
+    return render(request, "contact-profile.html", {'contact': contact})
+
+
+def edit(request, pk):
+    contact = ContactModel.objects.get(id=pk)
+
+    if request.method == "POST":
+        contact.fullname = request.POST['fullname']
+        contact.relationship = request.POST['relationship']
+        contact.email = request.POST['email']
+        contact.phone = request.POST['phone_number']
+        contact.address = request.POST['address']
+        contact.save()
+        return redirect('/profile/'+str(contact.id))
+
+    return render(request, "edit.html", {'contact': contact})
 
 
 def delete(request):
     return render(request, "delete.html")
-
-
-def contactProfile(request, pk):
-    contact = ContactModel.objects.get(id=pk)
-    return render(request, "contact-profile.html", {'contact': contact})

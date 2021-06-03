@@ -5,18 +5,70 @@
     <title>Edit Display</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
 <div class="container">
-    <div class="col-md-10 offset-md-1 mt-5">
-        <div class="jumbotron">
-              <h1 class="display-4">Editing Display</h1>
-              <p class="lead font-italic">Employees Register Application with CRUD operators....</p>
-              <hr class="my-4">
 
+    <div class="jumbotron">
+
+        <div class="card mx-auto" style="width: 18rem;" >
+            <div class="card-body mx-auto w-auto" style="width: 22rem;">
+                <h5 class="card-title">{{contact.fullname | title}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{contact.relationship | title}}</h6>
+                <a href="#" class="card-link"><i class="fas fa-cog"></i></a>
+                <a href="#" class="card-link"><i class="fas fa-trash-alt"></i></a>
+            </div>
         </div>
+        <hr class="my-4">
+
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <a href="{% url 'profile' contact.id %}"><i class="fas fa-arrow-circle-left"></i></a>
+
+            <div class="col-md-10 offset-md-1 mt-5">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">
+                        <i class="fas fa-user-alt"></i>
+                    </label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" name="fullname" placeholder="fullname" value="{{contact.fullname}}">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">
+                        <i class="fas fa-users"></i>
+                    </label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" name="relationship" placeholder="friend" value="{{contact.relationship}}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">
+                        <i class="fas fa-at"></i>
+                    </label>
+                    <input type="email" class="form-control" id="formGroupExampleInput3" name="email" placeholder="Example@gmail.com" value="{{contact.email}}">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">
+                        <i class="fas fa-phone-square"></i>
+                    </label>
+                    <input type="tel" class="form-control" id="formGroupExampleInput4" name="phone_number" placeholder="0101010101" value="{{contact.phone}}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </label>
+                    <input type="text" class="form-control" id="formGroupExampleInput5" name="address" placeholder="address" value="{{contact.address}}">
+                </div>
+
+                <div class="d-grid gap-2 ">
+                    <button class="btn btn-primary" type="submit" name="submit_button">Save</button>
+                </div>
+
+
+            </div>
+        </form>
+
     </div>
 
 </div>
