@@ -26,8 +26,8 @@
             </li>
         </ul>
 
-        <form class="d-flex" id="search-form">
-                <input class="form-control me-2" type="search" placeholder="Search Name" aria-label="Search">
+        <form action="/" method="GET" class="d-flex" id="search-form">
+                <input class="form-control me-2" type="search" placeholder="Search Name" aria-label="Search" name="search-area" value="{{search_input}}">
                 <button class="btn btn-outline-success ml-1" type="submit">Search</button>
         </form>
     </div>
@@ -51,10 +51,10 @@
                     <div class="card-body">
                         <h5 class="card-title">{{contact.fullname | title}}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{contact.relationship | title}}</h6>
-                        <a href="#" class="card-link"><i class="fas fa-cog"></i></a>
-                        <a href="#" class="card-link"><i class="fas fa-trash-alt"></i></a>
                     </div>
                 </div>
+                {% empty %}
+                <h3>This contact doesn't exist...</h3>
                 {% endfor %}
             </a>
         </div>
@@ -64,8 +64,8 @@
 
 
 <div class="row mx-md-n5">
-  <div class="col px-md-5"><div class="p-3 border bg-light">Custom column padding</div></div>
-  <div class="col px-md-5"><div class="p-3 border bg-light">Custom column padding</div></div>
+  <div class="col px-md-5"><div class="p-3 border bg-light">Custom column left</div></div>
+  <div class="col px-md-5"><div class="p-3 border bg-light">Custom column right</div></div>
 </div>
 
 

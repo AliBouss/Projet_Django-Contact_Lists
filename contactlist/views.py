@@ -1,13 +1,19 @@
 from django.shortcuts import render, redirect
 from .models import ContactModel
 
+
 # Create your views here.
 
 
 def index(request):
     contacts = ContactModel.objects.all()
-
-    return render(request, "index.html", {"contacts": contacts})
+    search_input = request.GET.get('search-area')
+    if search_input:
+        contacts = ContactModel.objects.filter(fullname__icontains=search_input)
+    else:
+        contacts = ContactModel.objects.all()
+        search_input = ""
+    return render(request, "index.html", {"contacts": contacts, "search_input": search_input})
 
 
 def addcontact(request):
@@ -40,10 +46,16 @@ def edit(request, pk):
         contact.phone = request.POST['phone_number']
         contact.address = request.POST['address']
         contact.save()
-        return redirect('/profile/'+str(contact.id))
+        return redirect('/profile/' + str(contact.id))
 
     return render(request, "edit.html", {'contact': contact})
 
 
-def delete(request):
-    return render(request, "delete.html")
+def delete(request, pk):
+    contact = ContactModel.objects.get(id=pk)
+    if request.method == "POST":
+        contact.delete()
+        return redirect('/')
+    return render(request, "delete.html", {"contact": contact})
+
+

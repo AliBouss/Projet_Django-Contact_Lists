@@ -62,9 +62,10 @@
                 </div>
 
                 <div class="d-grid gap-2 ">
-                    <button class="btn btn-primary" type="submit" name="submit_button">Save</button>
-                </div>
+                    <button class="btn btn-primary" type="submit" name="submit_button">Save Contact</button>
 
+                    <a class="btn btn-danger" href="{% url 'delete' contact.id %}" name="submit_button">Delete Contact</a>
+                </div>
 
             </div>
         </form>
